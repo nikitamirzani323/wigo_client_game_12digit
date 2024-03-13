@@ -762,6 +762,7 @@
                         <th width="10%" class="text-xs text-center align-top">RESULT</th>
                         <th width="*" class="text-xs text-center align-top">NOMOR</th>
                         <th width="10%" class="text-xs text-right align-top">BET</th>
+                        <th width="10%" class="text-xs text-right align-top">&nbsp;</th>
                         <th width="10%" class="text-xs text-right align-top">WIN</th>
                     </tr>
                 </thead>
@@ -776,6 +777,7 @@
                         <td class="text-xs  text-center whitespace-nowrap align-top">{rec.invoiceclient_result}</td>
                         <td class="text-xs  text-center whitespace-nowrap align-top">{rec.invoiceclient_nomor}</td>
                         <td class="text-xs text-right  whitespace-nowrap align-top link-accent {rec.invoice_winlose_css}">{new Intl.NumberFormat().format(rec.invoiceclient_bet)}</td>
+                        <td class="text-xs text-right  whitespace-nowrap align-top link-accent {rec.invoice_winlose_css}">{new Intl.NumberFormat().format(rec.invoiceclient_multiplier)}</td>
                         <td class="text-xs text-right  whitespace-nowrap align-top link-secondary {rec.invoice_winlose_css}">{new Intl.NumberFormat().format(rec.invoiceclient_win)}</td>
                     </tr>
                     {/each}
@@ -852,7 +854,7 @@
                     <td class="text-xs lg:text-sm">{engine_multiplier_angka} x</td>
                 </tr>
                 <tr>
-                    <td class="text-xs lg:text-sm align-top">HADIAH<br />BESAR/KECIL,GENAP/GANJIL, <br />RED/BLACK</td>
+                    <td class="text-xs lg:text-sm align-top">HADIAH<br />BESAR/KECIL,<br />GENAP/GANJIL, <br />RED/BLACK</td>
                     <td class="text-xs lg:text-sm align-top">:</td>
                     <td class="text-xs lg:text-sm align-top">{engine_multiplier_redblack} x</td>
                 </tr>
@@ -890,31 +892,31 @@
             </table>
             <p class="text-[12px] mt-2">
                 <b class="uppercase font-bold">Cara Bermain :</b> <br />
-                Pilih angka 00 - 99 <br />
+                Pilih angka 00 - 11 <br />
                 Nomor akan diundi setelah waktu 0 Second,  <br />
-                jika nomor anda kena, maka anda akan mendapatkan: modal + (modal * 5)
+                jika nomor anda kena, maka anda akan mendapatkan: modal + (modal * hadiah)
                 <br /><br />
                 Contoh :<br />
                 KASUS 1:<br />
-                Anda memasang nomor 25, dengan bet 500<br />
-                keluaran adalah nomor 25<br />
-                jadi bet anda menang dari hasil Angka : 25, Line 2, Ganjil,Black <br />
+                Anda memasang nomor 10, dengan bet 1,000<br />
+                keluaran adalah nomor 10<br />
+                jadi bet anda menang dari hasil Angka : 10, Line 3, Besar, Genap, Red <br />
                 pembayarannya adalah : modal + (modal x 5)<br />
-                500 + (500 x 5) = 3000<br />
-                anda akan mendapatkan 3000
+                1,000 + (1,000 x 10) = 11,000<br />
+                anda akan mendapatkan 11,000
                 <br /><br />
                 KASUS 2:<br />
-                Anda memasang nomor 10, dengan bet 500<br />
+                Anda memasang nomor 12, dengan bet 1,000<br />
                 keluaran adalah nomor 00<br />
                 jadi bet anda kalah 
                 <br /><br />
                 KASUS 3:<br />
-                Anda memasang nomor GENAP, dengan bet 500<br />
-                keluaran adalah nomor 12<br />
-                jadi bet anda menang dari hasil Angka : 12, Line 1, Genap,Red <br />
-                pembayarannya adalah : modal + (modal x 5)<br />
-                500 + (500 x 0.95) = 975<br />
-                anda akan mendapatkan 3000
+                Anda memasang nomor GENAP, dengan bet 1,000<br />
+                keluaran adalah nomor 02<br />
+                jadi bet anda menang dari hasil Angka : 02, Line 2, Genap, Kecil, Red <br />
+                pembayarannya adalah : modal + (modal x 0.95)<br />
+                1,000 + (1,000 x 0.95) = 1,950<br />
+                anda akan mendapatkan 1,950
         </div>
     </div>
 </div>
