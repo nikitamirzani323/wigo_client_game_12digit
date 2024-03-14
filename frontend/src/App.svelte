@@ -24,10 +24,12 @@
   let client_name = "";
   let client_listbet = [];
   let engine_time = 0;
+  let engine_time_css = "link-accent";
   let engine_minbet = 0;
   let engine_multiplier_angka = 0;
   let engine_multiplier_redblack = 0;
   let engine_multiplier_line = 0;
+  let engine_result = "";
   let engine_status_game_redblackline = "N";
   let engine_status_maintenance = "N";
   let engine_invoice = "Memuat...";
@@ -75,7 +77,7 @@
           engine_status_game_redblackline = json.engine_status_game_redblackline;
           engine_status_maintenance = json.engine_status_maintenance;
           let record_listbet = json.client_listbet.record;
-          // console.log(client_listbet.length)
+      
           for (var i = 0; i < record_listbet.length; i++) {
             if(i==0){
               engine_minbet = record_listbet[i]["money_bet"]
@@ -107,15 +109,28 @@
             let data_invoice = text_finalsplit[0];
             let data_time = text_finalsplit[1];
             let data_status = text_finalsplit[2];
-            let maintenance_status = text_finalsplit[2];
+            let maintenance_status = text_finalsplit[3];
+            let data_result = text_finalsplit[4];
 
+            // console.log(text_dasar)
             if(data_invoice != ""){
               engine_invoice = data_invoice;
             }else{
               engine_invoice = "Memuat...";
             }
             engine_time = data_time;
+            if(engine_time < 6){
+              engine_time_css = "link-error"
+            }else{
+              engine_time_css = "link-accent"
+            }
+            if(data_result != ""){
+              engine_result = data_result;
+            }else{
+              engine_result = "";
+            }
             engine_status = data_status;
+           
           };
   }
  
@@ -127,6 +142,7 @@
     <Home 
       {path_api}  
       {engine_time}  
+      {engine_time_css}  
       {engine_invoice}  
       {engine_status}  
       {client_listbet}  
@@ -140,6 +156,7 @@
       {engine_multiplier_angka}  
       {engine_multiplier_redblack}  
       {engine_multiplier_line}  
+      {engine_result}  
       {engine_status_game_redblackline}  />
     {/if}
   </main>

@@ -9,6 +9,7 @@
    
     export let path_api = "";
     export let engine_time = 0
+    export let engine_time_css = ""
     export let engine_invoice = ""
     export let engine_status = "LOCK"
     export let client_company = ""
@@ -23,6 +24,7 @@
     export let engine_multiplier_angka = 0;
     export let engine_multiplier_redblack = 0;
     export let engine_multiplier_line = 0;
+    export let engine_result = "";
     export let engine_status_game_redblackline = "";
     
     let flag_toast = false;
@@ -83,7 +85,9 @@
         if(client_username != "" && client_company != ""){
             fetch_invoiceall()
         }
-        
+        if(engine_result != ""){
+            fetch_invoiceall()
+        }
     }
     async function call_bayar() {
         keranjang = [];
@@ -623,7 +627,7 @@
                 </div>
                 <div class="flex-col mt-2">
                     <div class="text-lg lg:text-xl">WAKTU</div>
-                    <div class="link-accent text-sm lg:text-lg">{engine_time} S </div>
+                    <div class="{engine_time_css} text-sm lg:text-lg">{engine_time} S </div>
                 </div>
             </section>
             <section class="w-full ">
@@ -646,7 +650,7 @@
                 </div>
                 <div class="flex-col w-full text-center">
                     <div class="text-sm">WAKTU</div>
-                    <div class="link-accent text-lg">{engine_time} S </div>
+                    <div class="{engine_time_css} text-lg">{engine_time} S </div>
                 </div>
             </section>
             <section class="flex w-full bg-base-100 p-2 rounded-md select-none mt-1">
@@ -659,64 +663,64 @@
                 </p>
             </section>
         </section>
-        <center class="mt-2 bg-base-300 p-2 rounded-2xl text-[11px] lg:text-[15px]">
-            Taruhan saya : Pilih beberapa angka untuk bertaruh
-        </center>
-        <section class="grid grid-cols-1 w-full gap-2 mt-2">
-            <div class="h-[270px] lg:h-[230px] w-full overflow-auto">
-                {#if engine_status_game_redblackline == "Y"}
-                <div class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-6 xl:grid-cols-6 lg:grid-cols-6 gap-1">
-                    <button  on:click={() => {
-                        handleclick_redblack("KECIL");
-                    }} class="{btn_kecil_css}">KECIL</button>
-                    <button  on:click={() => {
-                        handleclick_redblack("GANJIL");
-                    }} class="{btn_ganjil_css}">GANJIL</button>
-                    <button  on:click={() => {
-                        handleclick_redblack("BLACK");
-                    }} class="{btn_black_css}">BLACK</button>
-                    <button  on:click={() => {
-                        handleclick_redblack("RED");
-                    }} class="{btn_red_css}">RED</button>
-                    <button  on:click={() => {
-                        handleclick_redblack("GENAP");
-                    }} class="{btn_genap_css}">GENAP</button>
-                    <button  on:click={() => {
-                        handleclick_redblack("BESAR");
-                    }} class="{btn_besar_css}">BESAR</button>
-                </div>
-                <div class="grid grid-cols-3 mt-2  gap-1">
-                    <button  on:click={() => {
-                        handleclick_line("LINE1");
-                    }} class="{btn_line1_css}">LINE<br />1</button>
-                    <button  on:click={() => {
-                        handleclick_line("LINE2");
-                    }} class="{btn_line2_css}">LINE<br />2</button>
-                    <button  on:click={() => {
-                        handleclick_line("LINE3");
-                    }} class="{btn_line3_css}">LINE<br />3</button>
-                </div>
-                {/if}
-                <div class="grid grid-cols-6 mt-2  gap-1 w-full">
-                    {#each nomor as rec}
-                    <button  on:click={() => {
-                            handleclick_angka(rec.nomor_id);
-                        }} class="{rec.nomor_css}">{rec.nomor_id}</button>
-                    
-                    {/each}
-                </div>
-            </div>
-            <div class="flex-col">
-                <div on:click={() => {
-                    handleclick_listminbet();
-                  }} class="flex-col w-full h-[90px] justify-center bg-base-300 cursor-pointer rounded-lg">
-                    <div class="w-full p-2   text-center ">
-                        <div class="uppercase text-xs">Pilih Coin Bet :</div>
-                        <div class="text-5xl link-accent">{new Intl.NumberFormat().format(field_bet)}</div>
+        {#if engine_status == "OPEN"}
+            <center class="mt-2 bg-base-300 p-2 rounded-2xl text-[11px] lg:text-[15px]">
+                Taruhan saya : Pilih beberapa angka untuk bertaruh
+            </center>
+            <section class="grid grid-cols-1 w-full gap-2 mt-2">
+                <div class="h-[270px] lg:h-[230px] w-full overflow-auto">
+                    {#if engine_status_game_redblackline == "Y"}
+                    <div class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-6 xl:grid-cols-6 lg:grid-cols-6 gap-1">
+                        <button  on:click={() => {
+                            handleclick_redblack("KECIL");
+                        }} class="{btn_kecil_css}">KECIL</button>
+                        <button  on:click={() => {
+                            handleclick_redblack("GANJIL");
+                        }} class="{btn_ganjil_css}">GANJIL</button>
+                        <button  on:click={() => {
+                            handleclick_redblack("BLACK");
+                        }} class="{btn_black_css}">BLACK</button>
+                        <button  on:click={() => {
+                            handleclick_redblack("RED");
+                        }} class="{btn_red_css}">RED</button>
+                        <button  on:click={() => {
+                            handleclick_redblack("GENAP");
+                        }} class="{btn_genap_css}">GENAP</button>
+                        <button  on:click={() => {
+                            handleclick_redblack("BESAR");
+                        }} class="{btn_besar_css}">BESAR</button>
+                    </div>
+                    <div class="grid grid-cols-3 mt-2  gap-1">
+                        <button  on:click={() => {
+                            handleclick_line("LINE1");
+                        }} class="{btn_line1_css}">LINE<br />1</button>
+                        <button  on:click={() => {
+                            handleclick_line("LINE2");
+                        }} class="{btn_line2_css}">LINE<br />2</button>
+                        <button  on:click={() => {
+                            handleclick_line("LINE3");
+                        }} class="{btn_line3_css}">LINE<br />3</button>
+                    </div>
+                    {/if}
+                    <div class="grid grid-cols-6 mt-2  gap-1 w-full">
+                        {#each nomor as rec}
+                        <button  on:click={() => {
+                                handleclick_angka(rec.nomor_id);
+                            }} class="{rec.nomor_css}">{rec.nomor_id}</button>
+                        
+                        {/each}
                     </div>
                 </div>
-            </div>
-            {#if engine_status == "OPEN"}
+                <div class="flex-col">
+                    <div on:click={() => {
+                        handleclick_listminbet();
+                    }} class="flex-col w-full h-[90px] justify-center bg-base-300 cursor-pointer rounded-lg">
+                        <div class="w-full p-2   text-center ">
+                            <div class="uppercase text-xs">Pilih Coin Bet :</div>
+                            <div class="text-5xl link-accent">{new Intl.NumberFormat().format(field_bet)}</div>
+                        </div>
+                    </div>
+                </div>
                 {#if flag_btnbuy}
                     <div class="grid grid-cols-2 gap-2 w-full">
                         <button on:click={() => {
@@ -737,8 +741,17 @@
                         </button>
                     </div>
                 {/if}
-            {/if}
-        </section>
+            </section>
+        {:else}
+            <section class="grid grid-cols-1 w-full gap-2 mt-2 h-1/2 text-center bg-base-300">
+                <div class="text-[50px]">
+                    RESULT : 
+                </div>
+                <div class="text-[200px] -mt-12 link-accent h-[260px]">
+                    {engine_result}
+                </div>
+            </section> 
+        {/if}
     </section>
 </section>
 <section class="flex-col gap-2 mt-4 p-2 glass bg-opacity-60 rounded-md">
