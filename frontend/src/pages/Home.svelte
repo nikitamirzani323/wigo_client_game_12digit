@@ -93,8 +93,8 @@
         keranjang = [];
         let flag = true;
         let msg_err = ""
-        const mergeResult = [...listangka, ...redblack];
-        let total_bet_multiple = mergeResult.length
+      
+        let total_bet_multiple = listangka.length
         let total_bayar = parseInt(total_bet_multiple)*parseInt(field_bet)
         let multiplier = 0;
         if(parseInt(engine_time) < 5){
@@ -129,27 +129,27 @@
             for(let i=0;i<total_bet_multiple;i++){
                 let tipebet = "ANGKA"
                 multiplier = parseFloat(engine_multiplier_angka)
-                if(mergeResult[i] == "RED" || mergeResult[i] == "BLACK"){
+                if(listangka[i] == "RED" || listangka[i] == "BLACK"){
                     tipebet = "REDBLACK"
                     multiplier = parseFloat(engine_multiplier_redblack)
                 }
-                if(mergeResult[i] == "GANJIL" || mergeResult[i] == "GENAP"){
+                if(listangka[i] == "GANJIL" || listangka[i] == "GENAP"){
                     tipebet = "REDBLACK"
                     multiplier = parseFloat(engine_multiplier_redblack)
                 }
-                if(mergeResult[i] == "KECIL" || mergeResult[i] == "BESAR"){
+                if(listangka[i] == "KECIL" || listangka[i] == "BESAR"){
                     tipebet = "REDBLACK"
                     multiplier = parseFloat(engine_multiplier_redblack)
                 }
-                if(mergeResult[i] == "LINE1" || mergeResult[i] == "LINE2"){
+                if(listangka[i] == "LINE1" || listangka[i] == "LINE2"){
                     tipebet = "LINE"
                     multiplier = parseFloat(engine_multiplier_line)
                 }
-                if(mergeResult[i] == "LINE3" || mergeResult[i] == "LINE4"){
+                if(listangka[i] == "LINE3" || listangka[i] == "LINE4"){
                     tipebet = "LINE"
                     multiplier = parseFloat(engine_multiplier_line)
                 }
-                if(mergeResult[i] == "LINE5"){
+                if(listangka[i] == "LINE5"){
                     tipebet = "LINE"
                     multiplier = parseFloat(engine_multiplier_line)
                 }
@@ -158,7 +158,7 @@
                     mobile: "",
                     device: client_device,
                     tipebet: tipebet,
-                    nomor: mergeResult[i],
+                    nomor: listangka[i],
                     bet: parseInt(field_bet),
                     multiplier: parseFloat(multiplier)
                 };
@@ -277,6 +277,7 @@
                         invoiceclient_date: record[i]["invoiceclient_date"],
                         invoiceclient_result: record[i]["invoiceclient_result"],
                         invoiceclient_nomor: record[i]["invoiceclient_nomor"],
+                        invoiceclient_tipebet: record[i]["invoiceclient_tipebet"],
                         invoiceclient_bet: record[i]["invoiceclient_bet"],
                         invoiceclient_multiplier: record[i]["invoiceclient_multiplier"],
                         invoiceclient_win: record[i]["invoiceclient_win"],
@@ -343,176 +344,72 @@
     };
     
     const handleclick_redblack = (e) => {
+        let objIndex = nomorkecilgenapganjil_master.findIndex(obj => obj.nomor_id == e);
+        let btn_flag = nomorkecilgenapganjil_master[objIndex].nomor_flag;
+        let btn_css = "";
+       
         switch(e){
+            case "KECIL":
+                btn_css = "btn";
+                break;
             case "RED":
-                if(btn_red_flag == false){
-                    btn_red_css = "btn btn-outline"
-                    btn_red_flag = true;
-                    redblack.push(e)
-                }else{
-                    btn_red_css = "btn btn-error"
-                    btn_red_flag = false
-                    for (let i = 0; i < redblack.length; i++) { 
-                        if (redblack[i] === "RED") { 
-                            redblack.splice(i, 1); 
-                        } 
-                    }
-                }
+                btn_css = "btn btn-error";
                 break;
             case "BLACK":
-                if(btn_black_flag == false){
-                    btn_black_css = "btn btn-outline"
-                    btn_black_flag = true;
-                    redblack.push(e)
-                }else{
-                    btn_black_css = "btn"
-                    btn_black_flag = false
-                    for (let i = 0; i < redblack.length; i++) { 
-                        if (redblack[i] === "BLACK") { 
-                            redblack.splice(i, 1); 
-                        } 
-                    }
-                }
+                btn_css = "btn";
                 break;
             case "GANJIL":
-                if(btn_ganjil_flag == false){
-                    btn_ganjil_css = "btn btn-outline"
-                    btn_ganjil_flag = true;
-                    redblack.push(e)
-                }else{
-                    btn_ganjil_css = "btn"
-                    btn_ganjil_flag = false
-                    for (let i = 0; i < redblack.length; i++) { 
-                        if (redblack[i] === "GANJIL") { 
-                            redblack.splice(i, 1); 
-                        } 
-                    }
-                }
+                btn_css = "btn";
                 break;
             case "GENAP":
-                if(btn_genap_flag == false){
-                    btn_genap_css = "btn btn-outline"
-                    btn_genap_flag = true;
-                    redblack.push(e)
-                }else{
-                    btn_genap_css = "btn"
-                    btn_genap_flag = false
-                    for (let i = 0; i < redblack.length; i++) { 
-                        if (redblack[i] === "GENAP") { 
-                            redblack.splice(i, 1); 
-                        } 
-                    }
-                }
-                break;
-            case "KECIL":
-                if(btn_kecil_flag == false){
-                    btn_kecil_css = "btn btn-outline"
-                    btn_kecil_flag = true;
-                    redblack.push(e)
-                }else{
-                    btn_kecil_css = "btn"
-                    btn_kecil_flag = false
-                    for (let i = 0; i < redblack.length; i++) { 
-                        if (redblack[i] === "KECIL") { 
-                            redblack.splice(i, 1); 
-                        } 
-                    }
-                }
+                btn_css = "btn";
                 break;
             case "BESAR":
-                if(btn_besar_flag == false){
-                    btn_besar_css = "btn btn-outline"
-                    btn_besar_flag = true;
-                    redblack.push(e)
-                }else{
-                    btn_besar_css = "btn"
-                    btn_besar_flag = false
-                    for (let i = 0; i < redblack.length; i++) { 
-                        if (redblack[i] === "BESAR") { 
-                            redblack.splice(i, 1); 
-                        } 
-                    }
-                }
+                btn_css = "btn";
                 break;
+        }
+
+        if(btn_flag == false){
+            nomorkecilgenapganjil_master[objIndex].nomor_flag=true
+            nomorkecilgenapganjil_master[objIndex].nomor_css="btn btn-outline"
+            listangka.push(e)
+        }else{
+            nomorkecilgenapganjil_master[objIndex].nomor_flag=false
+            nomorkecilgenapganjil_master[objIndex].nomor_css=btn_css
+            for (let i = 0; i < listangka.length; i++) { 
+                if (listangka[i] === e) { 
+                    listangka.splice(i, 1); 
+                } 
+            }
         }
     };
     const handleclick_line = (e) => {
+        let objIndex = nomorline_master.findIndex(obj => obj.nomor_id == e);
+        let btn_flag = nomorline_master[objIndex].nomor_flag;
+        let btn_css = "";
         switch(e){
             case "LINE1":
-                if(btn_line1_flag == false){
-                    btn_line1_css = "btn btn-outline"
-                    btn_line1_flag = true;
-                    redblack.push(e)
-                }else{
-                    btn_line1_css = "btn btn-error"
-                    btn_line1_flag = false
-                    for (let i = 0; i < redblack.length; i++) { 
-                        if (redblack[i] === "LINE1") { 
-                            redblack.splice(i, 1); 
-                        } 
-                    }
-                }
+                btn_css = "btn";
                 break;
             case "LINE2":
-                if(btn_line2_flag == false){
-                    btn_line2_css = "btn btn-outline"
-                    btn_line2_flag = true;
-                    redblack.push(e)
-                }else{
-                    btn_line2_css = "btn"
-                    btn_line2_flag = false
-                    for (let i = 0; i < redblack.length; i++) { 
-                        if (redblack[i] === "LINE2") { 
-                            redblack.splice(i, 1); 
-                        } 
-                    }
-                }
+                btn_css = "btn";
                 break;
             case "LINE3":
-                if(btn_line3_flag == false){
-                    btn_line3_css = "btn btn-outline"
-                    btn_line3_flag = true;
-                    redblack.push(e)
-                }else{
-                    btn_line3_css = "btn"
-                    btn_line3_flag = false
-                    for (let i = 0; i < redblack.length; i++) { 
-                        if (redblack[i] === "LINE3") { 
-                            redblack.splice(i, 1); 
-                        } 
-                    }
-                }
+                btn_css = "btn";
                 break;
-            case "LINE4":
-                if(btn_line4_flag == false){
-                    btn_line4_css = "btn btn-outline"
-                    btn_line4_flag = true;
-                    redblack.push(e)
-                }else{
-                    btn_line4_css = "btn"
-                    btn_line4_flag = false
-                    for (let i = 0; i < redblack.length; i++) { 
-                        if (redblack[i] === "LINE4") { 
-                            redblack.splice(i, 1); 
-                        } 
-                    }
-                }
-                break;
-            case "LINE5":
-                if(btn_line5_flag == false){
-                    btn_line5_css = "btn btn-outline"
-                    btn_line5_flag = true;
-                    redblack.push(e)
-                }else{
-                    btn_line5_css = "btn"
-                    btn_line5_flag = false
-                    for (let i = 0; i < redblack.length; i++) { 
-                        if (redblack[i] === "LINE5") { 
-                            redblack.splice(i, 1); 
-                        } 
-                    }
-                }
-                break;
+        }
+        if(btn_flag == false){
+            nomorline_master[objIndex].nomor_flag=true
+            nomorline_master[objIndex].nomor_css="btn btn-outline"
+            listangka.push(e)
+        }else{
+            nomorline_master[objIndex].nomor_flag=false
+            nomorline_master[objIndex].nomor_css=btn_css
+            for (let i = 0; i < listangka.length; i++) { 
+                if (listangka[i] === e) { 
+                    listangka.splice(i, 1); 
+                } 
+            }
         }
     };
     const handleclick_angka = (e) => {
@@ -585,6 +482,19 @@
 		{nomor_id: "10", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "BLACK"},
 		{nomor_id: "11", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "RED"},
     ]
+    let nomorkecilgenapganjil_master = [
+        {nomor_id: "KECIL", nomor_flag:false,nomor_css:"btn"},
+		{nomor_id: "GANJIL", nomor_flag:false,nomor_css:"btn"},
+		{nomor_id: "BLACK", nomor_flag:false,nomor_css:"btn"},
+		{nomor_id: "RED", nomor_flag:false,nomor_css:"btn btn-error"},
+		{nomor_id: "GENAP", nomor_flag:false,nomor_css:"btn"},
+		{nomor_id: "BESAR", nomor_flag:false,nomor_css:"btn"},
+    ]
+    let nomorline_master = [
+        {nomor_id: "LINE1", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "LINE2", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "LINE3", nomor_flag:false,nomor_css:"btn"},
+    ]
     let nomor = [
         {nomor_id: "00", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "BLACK"},
 		{nomor_id: "01", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
@@ -599,6 +509,25 @@
 		{nomor_id: "10", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "BLACK"},
 		{nomor_id: "11", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "RED"},
     ]
+    function nomorresult(e){
+        let css = ""
+        for(let i=0;i<nomor_master.length;i++){
+            if(e == nomor_master[i].nomor_id){
+                css = nomor_master[i].nomor_css
+            }
+        }
+        for(let i=0;i<nomorkecilgenapganjil_master.length;i++){
+            if(e == nomorkecilgenapganjil_master[i].nomor_id){
+                css = nomorkecilgenapganjil_master[i].nomor_css
+            }
+        }
+        for(let i=0;i<nomorline_master.length;i++){
+            if(e == nomorline_master[i].nomor_id){
+                css = nomorline_master[i].nomor_css
+            }
+        }
+        return css
+    }
   </script>
  
 <section class="glass bg-opacity-60 rounded-lg">
@@ -671,35 +600,19 @@
                 <div class="h-[270px] lg:h-[230px] w-full overflow-auto">
                     {#if engine_status_game_redblackline == "Y"}
                     <div class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-6 xl:grid-cols-6 lg:grid-cols-6 gap-1">
-                        <button  on:click={() => {
-                            handleclick_redblack("KECIL");
-                        }} class="{btn_kecil_css}">KECIL</button>
-                        <button  on:click={() => {
-                            handleclick_redblack("GANJIL");
-                        }} class="{btn_ganjil_css}">GANJIL</button>
-                        <button  on:click={() => {
-                            handleclick_redblack("BLACK");
-                        }} class="{btn_black_css}">BLACK</button>
-                        <button  on:click={() => {
-                            handleclick_redblack("RED");
-                        }} class="{btn_red_css}">RED</button>
-                        <button  on:click={() => {
-                            handleclick_redblack("GENAP");
-                        }} class="{btn_genap_css}">GENAP</button>
-                        <button  on:click={() => {
-                            handleclick_redblack("BESAR");
-                        }} class="{btn_besar_css}">BESAR</button>
+                        {#each nomorkecilgenapganjil_master as rec}
+                            <button  on:click={() => {
+                                handleclick_redblack(rec.nomor_id);
+                            }} class="{rec.nomor_css}">{rec.nomor_id}</button>
+                        {/each}
                     </div>
                     <div class="grid grid-cols-3 mt-2  gap-1">
-                        <button  on:click={() => {
-                            handleclick_line("LINE1");
-                        }} class="{btn_line1_css}">LINE<br />1</button>
-                        <button  on:click={() => {
-                            handleclick_line("LINE2");
-                        }} class="{btn_line2_css}">LINE<br />2</button>
-                        <button  on:click={() => {
-                            handleclick_line("LINE3");
-                        }} class="{btn_line3_css}">LINE<br />3</button>
+                        {#each nomorline_master as rec}
+                            <button  on:click={() => {
+                                handleclick_line(rec.nomor_id);
+                            }} class="{rec.nomor_css}">{rec.nomor_id}</button>
+                        {/each}
+                        
                     </div>
                     {/if}
                     <div class="grid grid-cols-6 mt-2  gap-1 w-full">
@@ -782,16 +695,20 @@
                 <tbody>
                     {#each list_invoice as rec}
                     <tr class="border-none">
-                        <td class="text-xs  text-center whitespace-nowrap align-top">
-                            <span class="{rec.invoiceclient_status_css} p-1 text-xs lg:text-sm  uppercase  rounded-lg w-20 text-black ">{rec.invoiceclient_status}</span>
+                        <td class="text-xs   text-center whitespace-nowrap align-top">
+                            <span class="{rec.invoiceclient_status_css} p-1 text-xs   uppercase   w-20 text-black ">{rec.invoiceclient_status}</span>
                         </td>
-                        <td class="text-xs  text-left whitespace-nowrap align-top border-b-transparent">{rec.invoiceclient_id}</td>
-                        <td class="text-xs  text-center whitespace-nowrap align-top">{rec.invoiceclient_date}</td>
-                        <td class="text-xs  text-center whitespace-nowrap align-top">{rec.invoiceclient_result}</td>
-                        <td class="text-xs  text-center whitespace-nowrap align-top">{rec.invoiceclient_nomor}</td>
-                        <td class="text-xs text-right  whitespace-nowrap align-top link-accent {rec.invoice_winlose_css}">{new Intl.NumberFormat().format(rec.invoiceclient_bet)}</td>
-                        <td class="text-xs text-right  whitespace-nowrap align-top link-accent {rec.invoice_winlose_css}">{new Intl.NumberFormat().format(rec.invoiceclient_multiplier)}</td>
-                        <td class="text-xs text-right  whitespace-nowrap align-top link-secondary {rec.invoice_winlose_css}">{new Intl.NumberFormat().format(rec.invoiceclient_win)}</td>
+                        <td class="text-xs   text-left whitespace-nowrap align-top border-b-transparent">{rec.invoiceclient_id}</td>
+                        <td class="text-xs   text-center whitespace-nowrap align-top">{rec.invoiceclient_date}</td>
+                        <td class="text-xs   text-center whitespace-nowrap align-top">
+                           <span class="{nomorresult(rec.invoiceclient_result)} text-xs  btn-xs">{rec.invoiceclient_result}</span>
+                        </td>
+                        <td class="text-xs  text-center whitespace-nowrap align-top">
+                            <span class="{nomorresult(rec.invoiceclient_nomor)} text-xs  btn-xs">{rec.invoiceclient_nomor}</span>
+                        </td>
+                        <td class="text-xs  text-right  whitespace-nowrap align-top link-accent {rec.invoice_winlose_css}">{new Intl.NumberFormat().format(rec.invoiceclient_bet)}</td>
+                        <td class="text-xs  text-right  whitespace-nowrap align-top link-accent {rec.invoice_winlose_css}">{new Intl.NumberFormat().format(rec.invoiceclient_multiplier)}</td>
+                        <td class="text-xs  text-right  whitespace-nowrap align-top link-secondary {rec.invoice_winlose_css}">{new Intl.NumberFormat().format(rec.invoiceclient_win)}</td>
                     </tr>
                     {/each}
                 </tbody>
@@ -811,9 +728,11 @@
                 <tbody>
                     {#each list_result as rec}
                     <tr class="border-none">
-                        <td class="text-xs  text-left whitespace-nowrap align-top border-b-transparent">{rec.result_invoice}</td>
-                        <td class="text-xs  text-center whitespace-nowrap align-top">{rec.result_date}</td>
-                        <td class="text-xs  text-center whitespace-nowrap align-top">{rec.result_result}</td>
+                        <td class="text-xs lg:text-sm  text-left whitespace-nowrap align-top border-b-transparent">{rec.result_invoice}</td>
+                        <td class="text-xs lg:text-sm  text-center whitespace-nowrap align-top">{rec.result_date}</td>
+                        <td class="text-xs lg:text-sm  text-center whitespace-nowrap align-top">
+                            <span class="{nomorresult(rec.result_result)} text-xs lg:text-sm btn-xs">{rec.result_result}</span>
+                        </td>
                     </tr>
                     {/each}
                 </tbody>
