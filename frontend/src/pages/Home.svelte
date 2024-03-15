@@ -335,6 +335,14 @@
             nomor[i].nomor_flag = nomor_master[i].nomor_flag
             nomor[i].nomor_css = nomor_master[i].nomor_css
         }
+        for(let i=0;i<nomorkecilgenapganjil_master.length;i++){
+            nomorkecilgenapganjil[i].nomor_flag = nomorkecilgenapganjil_master[i].nomor_flag
+            nomorkecilgenapganjil[i].nomor_css = nomorkecilgenapganjil_master[i].nomor_css
+        }
+        for(let i=0;i<nomorline_master.length;i++){
+            nomorline[i].nomor_flag = nomorline_master[i].nomor_flag
+            nomorline[i].nomor_css = nomorline_master[i].nomor_css
+        }
     };
     const call_allinvoice = () => {
         fetch_invoiceall()
@@ -344,8 +352,8 @@
     };
     
     const handleclick_redblack = (e) => {
-        let objIndex = nomorkecilgenapganjil_master.findIndex(obj => obj.nomor_id == e);
-        let btn_flag = nomorkecilgenapganjil_master[objIndex].nomor_flag;
+        let objIndex = nomorkecilgenapganjil.findIndex(obj => obj.nomor_id == e);
+        let btn_flag = nomorkecilgenapganjil[objIndex].nomor_flag;
         let btn_css = "";
        
         switch(e){
@@ -368,14 +376,13 @@
                 btn_css = "btn";
                 break;
         }
-
         if(btn_flag == false){
-            nomorkecilgenapganjil_master[objIndex].nomor_flag=true
-            nomorkecilgenapganjil_master[objIndex].nomor_css="btn btn-outline"
+            nomorkecilgenapganjil[objIndex].nomor_flag=true
+            nomorkecilgenapganjil[objIndex].nomor_css="btn btn-outline"
             listangka.push(e)
         }else{
-            nomorkecilgenapganjil_master[objIndex].nomor_flag=false
-            nomorkecilgenapganjil_master[objIndex].nomor_css=btn_css
+            nomorkecilgenapganjil[objIndex].nomor_flag=false
+            nomorkecilgenapganjil[objIndex].nomor_css=btn_css
             for (let i = 0; i < listangka.length; i++) { 
                 if (listangka[i] === e) { 
                     listangka.splice(i, 1); 
@@ -384,8 +391,8 @@
         }
     };
     const handleclick_line = (e) => {
-        let objIndex = nomorline_master.findIndex(obj => obj.nomor_id == e);
-        let btn_flag = nomorline_master[objIndex].nomor_flag;
+        let objIndex = nomorline.findIndex(obj => obj.nomor_id == e);
+        let btn_flag = nomorline[objIndex].nomor_flag;
         let btn_css = "";
         switch(e){
             case "LINE1":
@@ -399,12 +406,12 @@
                 break;
         }
         if(btn_flag == false){
-            nomorline_master[objIndex].nomor_flag=true
-            nomorline_master[objIndex].nomor_css="btn btn-outline"
+            nomorline[objIndex].nomor_flag=true
+            nomorline[objIndex].nomor_css="btn btn-outline"
             listangka.push(e)
         }else{
-            nomorline_master[objIndex].nomor_flag=false
-            nomorline_master[objIndex].nomor_css=btn_css
+            nomorline[objIndex].nomor_flag=false
+            nomorline[objIndex].nomor_css=btn_css
             for (let i = 0; i < listangka.length; i++) { 
                 if (listangka[i] === e) { 
                     listangka.splice(i, 1); 
@@ -509,6 +516,19 @@
 		{nomor_id: "10", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "BLACK"},
 		{nomor_id: "11", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "RED"},
     ]
+    let nomorkecilgenapganjil = [
+        {nomor_id: "KECIL", nomor_flag:false,nomor_css:"btn"},
+		{nomor_id: "GANJIL", nomor_flag:false,nomor_css:"btn"},
+		{nomor_id: "BLACK", nomor_flag:false,nomor_css:"btn"},
+		{nomor_id: "RED", nomor_flag:false,nomor_css:"btn btn-error"},
+		{nomor_id: "GENAP", nomor_flag:false,nomor_css:"btn"},
+		{nomor_id: "BESAR", nomor_flag:false,nomor_css:"btn"},
+    ]
+    let nomorline = [
+        {nomor_id: "LINE1", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "LINE2", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "LINE3", nomor_flag:false,nomor_css:"btn"},
+    ]
     function nomorresult(e){
         let css = ""
         for(let i=0;i<nomor_master.length;i++){
@@ -600,14 +620,14 @@
                 <div class="h-[270px] lg:h-[230px] w-full overflow-auto">
                     {#if engine_status_game_redblackline == "Y"}
                     <div class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-6 xl:grid-cols-6 lg:grid-cols-6 gap-1">
-                        {#each nomorkecilgenapganjil_master as rec}
+                        {#each nomorkecilgenapganjil as rec}
                             <button  on:click={() => {
                                 handleclick_redblack(rec.nomor_id);
                             }} class="{rec.nomor_css}">{rec.nomor_id}</button>
                         {/each}
                     </div>
                     <div class="grid grid-cols-3 mt-2  gap-1">
-                        {#each nomorline_master as rec}
+                        {#each nomorline as rec}
                             <button  on:click={() => {
                                 handleclick_line(rec.nomor_id);
                             }} class="{rec.nomor_css}">{rec.nomor_id}</button>
@@ -620,7 +640,6 @@
                         <button  on:click={() => {
                                 handleclick_angka(rec.nomor_id);
                             }} class="{rec.nomor_css}">{rec.nomor_id}</button>
-                        
                         {/each}
                     </div>
                 </div>
