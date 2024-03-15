@@ -2,6 +2,7 @@
   import Home from "./pages/Home.svelte"
 
   export let path_api = "";
+  export let path_websocket = "";
   export let version = "";
 
   const queryString = window.location.search;
@@ -94,7 +95,8 @@
             flag_game = false
           }else{
             flag_game = true
-            sse()
+            // sse()
+            websocket(client_company)
           }
           
       }
@@ -133,7 +135,57 @@
            
           };
   }
- 
+  let conn;
+  function websocket(e){
+    if (window["WebSocket"]) {
+        conn = new WebSocket("wss://"+path_websocket+"/ws/time");
+        
+        conn.onclose = function (evt) {
+            var item = document.createElement("div");
+            item.innerHTML = "<b>Connection closed.</b>";
+            // appendLog(item);
+        };
+        conn.onopen = function(evt) {
+          // console.log(evt)
+          conn.send("nuke")
+        }
+        conn.onmessage = function (evt) {
+            var messages = evt.data;
+            let text_replace1 = messages.replace(`"`,'')
+            let text_replace2 = text_replace1.replace(`"`,'')
+            let text_finalsplit = text_replace2.split("|");
+            
+
+            let data_invoice = text_finalsplit[0];
+            let data_time = text_finalsplit[1];
+            let data_status = text_finalsplit[2];
+            let maintenance_status = text_finalsplit[3];
+            let data_result = text_finalsplit[4];
+
+            // console.log(text_dasar)
+            if(data_invoice != ""){
+              engine_invoice = data_invoice;
+            }else{
+              engine_invoice = "Memuat...";
+            }
+            engine_time = data_time;
+            if(engine_time < 6){
+              engine_time_css = "link-error"
+            }else{
+              engine_time_css = "link-accent"
+            }
+            if(data_result != ""){
+              engine_result = data_result;
+            }else{
+              engine_result = "";
+            }
+            engine_status = data_status;
+        };
+    } else {
+        console.log("Your browser does not support WebSockets.")
+        // appendLog(item);
+    }
+  }
   
 </script>
 {#if engine_status_maintenance == "N"}
