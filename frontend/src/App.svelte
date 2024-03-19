@@ -36,6 +36,7 @@
   let engine_invoice = "Memuat...";
   let engine_status = "LOCK";
   let isModalAlert = false;
+  let conn;
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     client_device = "MOBILE";
   } else {
@@ -101,41 +102,7 @@
           
       }
   }
-  function sse(){
-    var source = new EventSource(path_api+"sse");
-          source.onmessage = function(event) {
-            let text_dasar = event.data;
-            let text_replace1 = text_dasar.replace(`"`,"")
-            let text_replace2 = text_replace1.replace(`"`,"")
-            let text_finalsplit = text_replace2.split("|");
-            let data_invoice = text_finalsplit[0];
-            let data_time = text_finalsplit[1];
-            let data_status = text_finalsplit[2];
-            let maintenance_status = text_finalsplit[3];
-            let data_result = text_finalsplit[4];
-
-            // console.log(text_dasar)
-            if(data_invoice != ""){
-              engine_invoice = data_invoice;
-            }else{
-              engine_invoice = "Memuat...";
-            }
-            engine_time = data_time;
-            if(engine_time < 6){
-              engine_time_css = "link-error"
-            }else{
-              engine_time_css = "link-accent"
-            }
-            if(data_result != ""){
-              engine_result = data_result;
-            }else{
-              engine_result = "";
-            }
-            engine_status = data_status;
-           
-          };
-  }
-  let conn;
+  
   function websocket(e){
     if (window["WebSocket"]) {
         conn = new WebSocket("wss://"+path_websocket+"/ws/time");

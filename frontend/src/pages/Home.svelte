@@ -2,7 +2,7 @@
     import dayjs from "dayjs";
     import utc from "dayjs/plugin/utc";
     import timezone from "dayjs/plugin/timezone";
-  
+    import toast, { Toaster } from 'svelte-french-toast';
     
     dayjs.extend(utc);
     dayjs.extend(timezone);
@@ -187,14 +187,29 @@
             } else {
                 client_credit = parseInt(client_credit) - parseInt(total_bayar)
                 fetch_invoiceall()
-                flag_toast = true
+           
                 flag_btnbuy = true;
                 toast_message = json.message
+                switch(json.message){
+                    case "Success":
+                        toast.success(json.message);
+                        break;
+                    case "Failed":
+                        toast.error(msg_err);
+                        break;
+                    default:
+                        toast.error("System Error, Please contact administrator");
+                        break;
+
+                }       
+
+
+                
                 call_reset()
             }
         }else{
-            flag_toast = true
-            toast_message = msg_err
+            
+            toast.error(msg_err);
         }
         setTimeout(toast_hidden, 3000);
     }
@@ -548,6 +563,8 @@
         }
         return css
     }
+    
+    
   </script>
  
 <section class="glass bg-opacity-60 rounded-lg">
@@ -760,13 +777,7 @@
         {/if}
     </section>
 </section>
-{#if flag_toast}
-    <div class="toast toast-top toast-center">
-        <div class="alert ">
-            <span>{toast_message}</span>
-        </div>
-    </div>
-{/if}
+<Toaster />
 
 <input type="checkbox" id="my-modal-information" class="modal-toggle" bind:checked={isModalMinBet}>
 <div class="modal" on:click|self={()=>isModalMinBet = false}>
