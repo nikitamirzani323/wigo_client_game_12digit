@@ -519,8 +519,8 @@
     let nomorkecilgenapganjil = [
         {nomor_id: "KECIL", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "GANJIL", nomor_flag:false,nomor_css:"btn"},
-		{nomor_id: "BLACK", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "RED", nomor_flag:false,nomor_css:"btn btn-error"},
+		{nomor_id: "BLACK", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "GENAP", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "BESAR", nomor_flag:false,nomor_css:"btn"},
     ]
@@ -675,7 +675,7 @@
                 {/if}
             </section>
         {:else}
-            <section class="grid grid-cols-1 w-full gap-2 mt-2 h-1/2 text-center bg-base-300">
+            <section class="grid grid-cols-1 w-full gap-2 mt-2 h-1/2 text-center ">
                 <div class="text-[50px]">
                     RESULT : 
                 </div>
