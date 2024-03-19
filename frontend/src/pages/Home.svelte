@@ -27,8 +27,7 @@
     export let engine_result = "";
     export let engine_status_game_redblackline = "";
     
-    let flag_toast = false;
-    let toast_message = "";
+   
     
     let clockmachine = "";
     
@@ -76,9 +75,7 @@
       clockmachine = endtime;
     }
   
-    function toast_hidden() {
-        flag_toast = false;
-    }
+    
     $: {
         setInterval(updateClock, 1000);
         field_bet = engine_minbet
@@ -189,7 +186,6 @@
                 fetch_invoiceall()
            
                 flag_btnbuy = true;
-                toast_message = json.message
                 switch(json.message){
                     case "Success":
                         toast.success(json.message);
@@ -211,7 +207,6 @@
             
             toast.error(msg_err);
         }
-        setTimeout(toast_hidden, 3000);
     }
     async function fetch_listresult() {
         flag_listinvoice = false;
