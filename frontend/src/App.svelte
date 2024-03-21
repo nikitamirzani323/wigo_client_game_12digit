@@ -129,7 +129,7 @@
             let maintenance_status = text_finalsplit[3];
             let data_result = text_finalsplit[4];
 
-            console.log(data_result)
+            // console.log(data_result)
             if(data_invoice != ""){
               engine_invoice = data_invoice;
             }else{
