@@ -6,8 +6,8 @@ import (
 	"os/signal"
 	"syscall"
 
+	"bitbucket.org/isbtotogroup/wigo_client_game_12digit/router"
 	"github.com/joho/godotenv"
-	"github.com/nikitamirzani323/btangkas-client/router"
 )
 
 func main() {

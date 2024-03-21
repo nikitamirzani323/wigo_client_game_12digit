@@ -1,4 +1,4 @@
-module github.com/nikitamirzani323/btangkas-client
+module bitbucket.org/isbtotogroup/wigo_client_game_12digit
 
 go 1.19
 

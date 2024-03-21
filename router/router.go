@@ -6,12 +6,12 @@ import (
 	"os"
 	"strconv"
 
+	"bitbucket.org/isbtotogroup/wigo_client_game_12digit/controller"
 	"github.com/go-redis/redis"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
-	"github.com/nikitamirzani323/btangkas-client/controller"
 	"github.com/valyala/fasthttp"
 )
 

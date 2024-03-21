@@ -5,9 +5,9 @@ import (
 	"log"
 	"time"
 
+	"bitbucket.org/isbtotogroup/wigo_client_game_12digit/config"
 	"github.com/go-resty/resty/v2"
 	"github.com/gofiber/fiber/v2"
-	"github.com/nikitamirzani323/btangkas-client/config"
 )
 
 type responsechecktoken struct {
