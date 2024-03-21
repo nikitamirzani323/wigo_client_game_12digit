@@ -486,18 +486,18 @@
         }
     };
     let nomor_master = [
-        {nomor_id: "00", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "BLACK"},
-		{nomor_id: "01", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
-		{nomor_id: "02", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
-		{nomor_id: "03", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "RED"},
-		{nomor_id: "04", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "BLACK"},
-		{nomor_id: "05", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "RED"},
-		{nomor_id: "06", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "BLACK"},
-		{nomor_id: "07", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
-		{nomor_id: "08", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
-		{nomor_id: "09", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "RED"},
-		{nomor_id: "10", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "BLACK"},
-		{nomor_id: "11", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "RED"},
+		{nomor_id: "01", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "BLACK"},
+		{nomor_id: "02", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
+		{nomor_id: "03", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
+		{nomor_id: "04", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "RED"},
+		{nomor_id: "05", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "BLACK"},
+		{nomor_id: "06", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "RED"},
+		{nomor_id: "07", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE1", nomor_redblack: "BLACK"},
+		{nomor_id: "08", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE1", nomor_redblack: "RED"},
+		{nomor_id: "09", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE2", nomor_redblack: "BLACK"},
+		{nomor_id: "10", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE2", nomor_redblack: "RED"},
+		{nomor_id: "11", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "BLACK"},
+        {nomor_id: "12", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
     ]
     let nomorkecilgenapganjil_master = [
         {nomor_id: "KECIL", nomor_flag:false,nomor_css:"btn"},
@@ -513,24 +513,24 @@
         {nomor_id: "LINE3", nomor_flag:false,nomor_css:"btn"},
     ]
     let nomor = [
-        {nomor_id: "00", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "BLACK"},
-		{nomor_id: "01", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
-		{nomor_id: "02", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
-		{nomor_id: "03", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "RED"},
-		{nomor_id: "04", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "BLACK"},
-		{nomor_id: "05", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "RED"},
-		{nomor_id: "06", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "BLACK"},
-		{nomor_id: "07", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
-		{nomor_id: "08", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
-		{nomor_id: "09", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "RED"},
-		{nomor_id: "10", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "BLACK"},
-		{nomor_id: "11", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "RED"},
+        {nomor_id: "01", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "BLACK"},
+		{nomor_id: "02", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
+		{nomor_id: "03", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
+		{nomor_id: "04", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "RED"},
+		{nomor_id: "05", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "BLACK"},
+		{nomor_id: "06", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "RED"},
+		{nomor_id: "07", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE1", nomor_redblack: "BLACK"},
+		{nomor_id: "08", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE1", nomor_redblack: "RED"},
+		{nomor_id: "09", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE2", nomor_redblack: "BLACK"},
+		{nomor_id: "10", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE2", nomor_redblack: "RED"},
+		{nomor_id: "11", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "BLACK"},
+        {nomor_id: "12", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
     ]
     let nomorkecilgenapganjil = [
         {nomor_id: "KECIL", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "GANJIL", nomor_flag:false,nomor_css:"btn"},
-		{nomor_id: "RED", nomor_flag:false,nomor_css:"btn btn-error"},
 		{nomor_id: "BLACK", nomor_flag:false,nomor_css:"btn"},
+		{nomor_id: "RED", nomor_flag:false,nomor_css:"btn btn-error"},
 		{nomor_id: "GENAP", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "BESAR", nomor_flag:false,nomor_css:"btn"},
     ]
@@ -669,7 +669,7 @@
                     <div class="grid grid-cols-2 gap-2 w-full">
                         <button on:click={() => {
                                     call_reset();
-                            }}  class="btn btn-warning">
+                            }}  class="btn btn-primary">
                             Reset 
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
@@ -806,7 +806,7 @@
                     <td width="*" class="text-xs lg:text-sm">{new Intl.NumberFormat().format(field_bet)}</td>
                 </tr>
                 <tr>
-                    <td class="text-xs lg:text-sm">HADIAH ANGKA (00 - 11)</td>
+                    <td class="text-xs lg:text-sm">HADIAH ANGKA (01 - 12)</td>
                     <td class="text-xs lg:text-sm">:</td>
                     <td class="text-xs lg:text-sm">{engine_multiplier_angka} x</td>
                 </tr>
@@ -824,32 +824,32 @@
                 <tr>
                     <td class="text-xs lg:text-sm align-top">KECIL</td>
                     <td class="text-xs lg:text-sm align-top">:</td>
-                    <td class="text-xs lg:text-sm align-top">00-05</td>
+                    <td class="text-xs lg:text-sm align-top">01-06</td>
                 </tr>
                 <tr>
                     <td class="text-xs lg:text-sm align-top">BESAR</td>
                     <td class="text-xs lg:text-sm align-top">:</td>
-                    <td class="text-xs lg:text-sm align-top">06-11</td>
+                    <td class="text-xs lg:text-sm align-top">07-12</td>
                 </tr>
                 <tr>
                     <td class="text-xs lg:text-sm align-top">Line 1</td>
                     <td class="text-xs lg:text-sm align-top">:</td>
-                    <td class="text-xs lg:text-sm align-top">00,01,06,07</td>
+                    <td class="text-xs lg:text-sm align-top">01,02,07,08</td>
                 </tr>
                 <tr>
                     <td class="text-xs lg:text-sm align-top">Line 2</td>
                     <td class="text-xs lg:text-sm align-top">:</td>
-                    <td class="text-xs lg:text-sm align-top">02,03,08,09</td>
+                    <td class="text-xs lg:text-sm align-top">03,04,09,10</td>
                 </tr>
                 <tr>
                     <td class="text-xs lg:text-sm align-top">Line 3</td>
                     <td class="text-xs lg:text-sm align-top">:</td>
-                    <td class="text-xs lg:text-sm align-top">04,05,10,11</td>
+                    <td class="text-xs lg:text-sm align-top">05,06,11,12</td>
                 </tr>
             </table>
             <p class="text-[12px] mt-2">
                 <b class="uppercase font-bold">Cara Bermain :</b> <br />
-                Pilih angka 00 - 11 <br />
+                Pilih angka 01 - 12 <br />
                 Nomor akan diundi setelah waktu 0 Second,  <br />
                 jika nomor anda kena, maka anda akan mendapatkan: modal + (modal * hadiah)
                 <br /><br />
