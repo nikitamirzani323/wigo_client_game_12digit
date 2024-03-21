@@ -153,10 +153,11 @@
         // appendLog(item);
     }
   }
-  
+
 </script>
 {#if engine_status_maintenance == "N"}
   <main class="container mx-auto px-2 mt-5 text-base-content   xl:mt-7 max-w-screen-xl  pb-5 h-fit lg:h-full">
+    
     {#if flag_game}
     <Home 
       {path_api}  
@@ -177,6 +178,8 @@
       {engine_multiplier_line}  
       {engine_result}  
       {engine_status_game_redblackline}  />
+    {:else}
+    <div class="skeleton w-full h-[500px]"></div>
     {/if}
   </main>
   <footer class="footer footer-center p-4 text-base-content mt-1 text-center select-none">
