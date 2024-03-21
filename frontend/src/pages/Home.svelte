@@ -795,58 +795,64 @@
 
 <input type="checkbox" id="my-modal-infogame" class="modal-toggle" bind:checked={isModalInfo}>
 <div class="modal" on:click|self={()=>isModalMinBet = false}>
-    <div class="modal-box relative w-11/12 max-w-lg h-1/2 lg:h-2/3 overflow-auto select-none">
+    <div class="modal-box relative w-11/12 max-w-xl h-1/2 lg:h-2/3 overflow-auto select-none">
         <label for="my-modal-infogame" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
         <h3 class="text-xs lg:text-sm font-bold -mt-2">INFO</h3>
         <div class="h-fit overflow-auto  mt-2 w-full" >
             <table class="table table-xs w-full ">
-                <tr>
-                    <td width="70%" class="text-xs lg:text-sm">MIN BET</td>
-                    <td width="1%" class="text-xs lg:text-sm">:</td>
-                    <td width="*" class="text-xs lg:text-sm">{new Intl.NumberFormat().format(field_bet)}</td>
-                </tr>
-                <tr>
-                    <td class="text-xs lg:text-sm">HADIAH ANGKA (01 - 12)</td>
-                    <td class="text-xs lg:text-sm">:</td>
-                    <td class="text-xs lg:text-sm">{engine_multiplier_angka} x</td>
-                </tr>
-                <tr>
-                    <td class="text-xs lg:text-sm align-top">HADIAH<br />BESAR/KECIL,<br />GENAP/GANJIL, <br />RED/BLACK</td>
-                    <td class="text-xs lg:text-sm align-top">:</td>
-                    <td class="text-xs lg:text-sm align-top">{engine_multiplier_redblack} x</td>
-                </tr>
-                <tr>
-                    <td class="text-xs lg:text-sm align-top">HADIAH LINE 1,2,3</td>
-                    <td class="text-xs lg:text-sm align-top">:</td>
-                    <td class="text-xs lg:text-sm align-top">{engine_multiplier_line} x</td>
-                </tr>
-                <tr><td colspan="3">&nbsp;</td></tr>
-                <tr>
-                    <td class="text-xs lg:text-sm align-top">KECIL</td>
-                    <td class="text-xs lg:text-sm align-top">:</td>
-                    <td class="text-xs lg:text-sm align-top">01-06</td>
-                </tr>
-                <tr>
-                    <td class="text-xs lg:text-sm align-top">BESAR</td>
-                    <td class="text-xs lg:text-sm align-top">:</td>
-                    <td class="text-xs lg:text-sm align-top">07-12</td>
-                </tr>
-                <tr>
-                    <td class="text-xs lg:text-sm align-top">Line 1</td>
-                    <td class="text-xs lg:text-sm align-top">:</td>
-                    <td class="text-xs lg:text-sm align-top">01,02,07,08</td>
-                </tr>
-                <tr>
-                    <td class="text-xs lg:text-sm align-top">Line 2</td>
-                    <td class="text-xs lg:text-sm align-top">:</td>
-                    <td class="text-xs lg:text-sm align-top">03,04,09,10</td>
-                </tr>
-                <tr>
-                    <td class="text-xs lg:text-sm align-top">Line 3</td>
-                    <td class="text-xs lg:text-sm align-top">:</td>
-                    <td class="text-xs lg:text-sm align-top">05,06,11,12</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th width="80%">PENJELASAN</th>
+                        <th width="*">HADIAH</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ANGKA (01 - 12)</td>
+                        <td>{engine_multiplier_angka} x</td>
+                    </tr>
+                    <tr>
+                        <td>BESAR/KECIL,GENAP/GANJIL,RED/BLACK</td>
+                        <td>{engine_multiplier_redblack} x</td>
+                    </tr>
+                    <tr>
+                        <td>LINE 1,2,3</td>
+                        <td>{engine_multiplier_line} x</td>
+                    </tr>
+                </tbody>
             </table>
+            <table class="table table-xs w-full mt-2">
+                <thead>
+                    <tr>
+                        <th width="80%">PENJELASAN</th>
+                        <th width="*">NOMOR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>KECIL</td>
+                        <td>01-06</td>
+                    </tr>
+                    <tr>
+                        <td>BESAR</td>
+                        <td>07-12</td>
+                    </tr>
+                    <tr>
+                        <td>Line 1</td>
+                        <td>01,02,07,08</td>
+                    </tr>
+                    <tr>
+                        <td>Line 2</td>
+                        <td>03,04,09,10</td>
+                    </tr>
+                    <tr>
+                        <td>Line 3</td>
+                        <td>05,06,11,12</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            
             <p class="text-[12px] mt-2">
                 <b class="uppercase font-bold">Cara Bermain :</b> <br />
                 Pilih angka 01 - 12 <br />
