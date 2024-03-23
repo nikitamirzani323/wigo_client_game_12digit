@@ -5,7 +5,7 @@ const app = new App({
   target: document.getElementById('app'),
   props: {
 	  	path_api: "/",
-	  	path_websocket: "pp88turnamen.com",
+	  	path_websocket: "isbskor.com",
 		// path_api: "http://localhost:1116/",
 		version: "0.0.1",
 	}
