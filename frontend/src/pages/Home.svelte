@@ -559,7 +559,21 @@
         return css
     }
     
-    
+    function nomorresulttwo(e){
+        let css = ""
+        for(let i=0;i<nomor_master.length;i++){
+            if(e == nomor_master[i].nomor_id){
+                css = nomor_master[i].nomor_redblack
+            }
+        }
+        
+        if(css == "BLACK"){
+            css = "bg-base-200 text-white"
+        }else if(css == "RED"){
+            css = "bg-error text-black "
+        }
+        return css
+    }
   </script>
  
 <section class="glass bg-opacity-60 rounded-lg">
@@ -567,7 +581,7 @@
         <section class="flex justify-between w-full">
             <div class="w-full ">
                 <center>
-                    <img class="w-[150px]" src="https://i.imgur.com/PNSe1ov.png" alt="" srcset="">
+                    <img class="w-[150px]" src="https://i.imgur.com/r6BsNCq.png" alt="" srcset="">
                 </center>
             </div>
             <div class="w-1/6 lg:w-1/12">
@@ -691,8 +705,10 @@
                 <div class="text-[50px]">
                     RESULT : 
                 </div>
-                <div class="text-[200px] -mt-12 link-accent h-[260px]">
-                    {engine_result}
+                <div class="-mt-5">
+                    <span class="rounded-box text-[200px]  font-extrabold {nomorresulttwo(engine_result)}">
+                        {engine_result}
+                    </span>
                 </div>
             </section> 
         {/if}
