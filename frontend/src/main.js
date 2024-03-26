@@ -4,9 +4,9 @@ import App from './App.svelte'
 const app = new App({
   target: document.getElementById('app'),
   props: {
-	  	path_api: "/",
+	  	// path_api: "/",
 	  	path_websocket: "isbskor.com",
-		// path_api: "http://localhost:1116/",
+		path_api: "http://localhost:1116/",
 		version: "0.0.1",
 	}
 })
