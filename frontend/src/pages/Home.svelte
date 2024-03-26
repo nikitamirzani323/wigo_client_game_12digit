@@ -561,12 +561,13 @@
     
     function nomorresulttwo(e){
         let css = ""
+        let temp = e.trim();
         for(let i=0;i<nomor_master.length;i++){
-            if(e == nomor_master[i].nomor_id){
+            if(temp == nomor_master[i].nomor_id){
                 css = nomor_master[i].nomor_redblack
             }
         }
-        
+        console.log(css)
         if(css == "BLACK"){
             css = "bg-base-200 text-white"
         }else if(css == "RED"){
@@ -605,7 +606,7 @@
                     <div class="{engine_time_css} text-sm lg:text-lg">{engine_time} S </div>
                 </div>
             </section>
-            <section class="w-full ">
+            <section class="w-full mr-2">
                 <p class="w-full text-[12px] text-right select-none mt-2">
                     Asia/Jakarta <br />
                     {clockmachine}  WIB (+7)<br>
@@ -705,9 +706,9 @@
                 <div class="text-[50px]">
                     RESULT : 
                 </div>
-                <div class="-mt-5">
+                <div class="-mt-5 h-[320px]">
                     <span class="rounded-box text-[200px]  font-extrabold {nomorresulttwo(engine_result)}">
-                        {engine_result}
+                       {engine_result}
                     </span>
                 </div>
             </section> 
