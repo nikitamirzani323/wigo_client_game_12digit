@@ -706,10 +706,12 @@
                 <div class="text-[50px]">
                     RESULT : 
                 </div>
-                <div class="-mt-5 h-[320px]">
-                    <span class="rounded-box text-[200px]  font-extrabold {nomorresulttwo(engine_result)}">
-                       {engine_result}
-                    </span>
+                <div class="-mt-5 h-[250px] w-full text-center">
+                    <center>
+                        <div class="rounded-box text-[150px] w-1/2 mt-5 mb-5  font-extrabold {nomorresulttwo(engine_result)}">
+                            {engine_result} 
+                        </div>
+                    </center>
                 </div>
             </section> 
         {/if}

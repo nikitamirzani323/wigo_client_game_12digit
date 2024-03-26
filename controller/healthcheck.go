@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"log"
+	"fmt"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -23,6 +23,6 @@ func HealthCheck(c *fiber.Ctx) error {
 	if err := c.JSON(res); err != nil {
 		return err
 	}
-	log.Println(res)
+	fmt.Println(res)
 	return nil
 }
