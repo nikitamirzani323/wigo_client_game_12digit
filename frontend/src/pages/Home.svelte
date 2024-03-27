@@ -147,8 +147,16 @@
                     tipebet = "LINE"
                     multiplier = parseFloat(engine_multiplier_line)
                 }
-                if(listangka[i] == "LINE5"){
-                    tipebet = "LINE"
+                if(listangka[i] == "ZONA_A" || listangka[i] == "ZONA_B"){
+                    tipebet = "ZONA"
+                    multiplier = parseFloat(engine_multiplier_line)
+                }
+                if(listangka[i] == "ZONA_C"){
+                    tipebet = "ZONA"
+                    multiplier = parseFloat(engine_multiplier_line)
+                }
+                if(listangka[i] == "JACKPOT"){
+                    tipebet = "JACKPOT"
                     multiplier = parseFloat(engine_multiplier_line)
                 }
                 const data = {
@@ -429,6 +437,9 @@
             case "LINE3":
                 btn_css = "btn";
                 break;
+            case "LINE4":
+                btn_css = "btn";
+                break;
         }
         if(btn_flag == false){
             nomorline[objIndex].nomor_flag=true
@@ -450,40 +461,49 @@
         let btn_css = "";
         switch(e){
             case "01":
-                btn_css = "btn";
+                btn_css = "btn btn-error";
                 break;
             case "02":
                 btn_css = "btn btn-error";
                 break;
             case "03":
-                btn_css = "btn";
+                btn_css = "btn btn-error";
                 break;
             case "04":
-                btn_css = "btn btn-error";
+                btn_css = "btn";
                 break;
             case "05":
                 btn_css = "btn";
                 break;
             case "06":
-                btn_css = "btn btn-error";
+                btn_css = "btn";
                 break;
             case "07":
-                btn_css = "btn";
+                btn_css = "btn btn-error";
                 break;
             case "08":
                 btn_css = "btn btn-error";
                 break;
             case "09":
-                btn_css = "btn";
+                btn_css = "btn btn-error";
                 break;
             case "10":
-                btn_css = "btn btn-error";
+                btn_css = "btn";
                 break;
             case "11":
                 btn_css = "btn";
                 break;
             case "12":
-                btn_css = "btn btn-error";
+                btn_css = "btn";
+                break;
+            case "ZONA_A":
+                btn_css = "btn";
+                break;
+            case "ZONA_B":
+                btn_css = "btn";
+                break;
+            case "ZONA_C":
+                btn_css = "btn";
                 break;
         }
         if(btn_flag == false){
@@ -501,24 +521,27 @@
         }
     };
     let nomor_master = [
-		{nomor_id: "01", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "BLACK"},
-		{nomor_id: "02", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
-		{nomor_id: "03", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
-		{nomor_id: "04", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "RED"},
-		{nomor_id: "05", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "BLACK"},
-		{nomor_id: "06", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "RED"},
-		{nomor_id: "07", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE1", nomor_redblack: "BLACK"},
-		{nomor_id: "08", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE1", nomor_redblack: "RED"},
-		{nomor_id: "09", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE2", nomor_redblack: "BLACK"},
-		{nomor_id: "10", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE2", nomor_redblack: "RED"},
-		{nomor_id: "11", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "BLACK"},
-        {nomor_id: "12", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
+		{nomor_id: "01", nomor_value:"01", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
+		{nomor_id: "04", nomor_value:"04", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
+		{nomor_id: "07", nomor_value:"07", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
+		{nomor_id: "10", nomor_value:"10", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE4", nomor_redblack: "BLACK"},
+		{nomor_id: "ZONA_A", nomor_value:"ZONA A", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
+		{nomor_id: "02", nomor_value:"02", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
+		{nomor_id: "05", nomor_value:"05", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
+		{nomor_id: "08", nomor_value:"08", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
+		{nomor_id: "11", nomor_value:"11", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE4", nomor_redblack: "BLACK"},
+        {nomor_id: "ZONA_B", nomor_value:"ZONA B", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
+		{nomor_id: "03", nomor_value:"03", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "RED"},
+		{nomor_id: "06", nomor_value:"06", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
+		{nomor_id: "09", nomor_value:"09", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
+        {nomor_id: "12", nomor_value:"12", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE4", nomor_redblack: "BLACK"},
+        {nomor_id: "ZONA_C", nomor_value:"ZONA C", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
     ]
     let nomorkecilgenapganjil_master = [
         {nomor_id: "KECIL", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "GANJIL", nomor_flag:false,nomor_css:"btn"},
-		{nomor_id: "BLACK", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "RED", nomor_flag:false,nomor_css:"btn btn-error"},
+		{nomor_id: "BLACK", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "GENAP", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "BESAR", nomor_flag:false,nomor_css:"btn"},
     ]
@@ -526,26 +549,31 @@
         {nomor_id: "LINE1", nomor_flag:false,nomor_css:"btn"},
         {nomor_id: "LINE2", nomor_flag:false,nomor_css:"btn"},
         {nomor_id: "LINE3", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "LINE4", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "JACKPOT", nomor_flag:false,nomor_css:"btn btn-accent"},
     ]
     let nomor = [
-        {nomor_id: "01", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "BLACK"},
-		{nomor_id: "02", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
-		{nomor_id: "03", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
-		{nomor_id: "04", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "RED"},
-		{nomor_id: "05", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "BLACK"},
-		{nomor_id: "06", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE3", nomor_redblack: "RED"},
-		{nomor_id: "07", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE1", nomor_redblack: "BLACK"},
-		{nomor_id: "08", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE1", nomor_redblack: "RED"},
-		{nomor_id: "09", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE2", nomor_redblack: "BLACK"},
-		{nomor_id: "10", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE2", nomor_redblack: "RED"},
-		{nomor_id: "11", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "BLACK"},
-        {nomor_id: "12", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
+        {nomor_id: "01", nomor_value:"01", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
+		{nomor_id: "04", nomor_value:"04", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
+		{nomor_id: "07", nomor_value:"07", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
+		{nomor_id: "10", nomor_value:"10", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE4", nomor_redblack: "BLACK"},
+		{nomor_id: "ZONA_A", nomor_value:"ZONA A", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
+		{nomor_id: "02", nomor_value:"02", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
+		{nomor_id: "05", nomor_value:"05", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
+		{nomor_id: "08", nomor_value:"08", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
+		{nomor_id: "11", nomor_value:"11", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE4", nomor_redblack: "BLACK"},
+        {nomor_id: "ZONA_B", nomor_value:"ZONA B", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
+		{nomor_id: "03", nomor_value:"03", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "RED"},
+		{nomor_id: "06", nomor_value:"06", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GENAP", nomor_besarkecil: "KECIL", nomor_line: "LINE2", nomor_redblack: "BLACK"},
+		{nomor_id: "09", nomor_value:"09", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
+        {nomor_id: "12", nomor_value:"12", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GENAP", nomor_besarkecil: "BESAR", nomor_line: "LINE4", nomor_redblack: "BLACK"},
+        {nomor_id: "ZONA_C", nomor_value:"ZONA C", nomor_flag:false,nomor_css:"btn",nomor_gangen: "GANJIL", nomor_besarkecil: "BESAR", nomor_line: "LINE3", nomor_redblack: "RED"},
     ]
     let nomorkecilgenapganjil = [
         {nomor_id: "KECIL", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "GANJIL", nomor_flag:false,nomor_css:"btn"},
-		{nomor_id: "BLACK", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "RED", nomor_flag:false,nomor_css:"btn btn-error"},
+		{nomor_id: "BLACK", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "GENAP", nomor_flag:false,nomor_css:"btn"},
 		{nomor_id: "BESAR", nomor_flag:false,nomor_css:"btn"},
     ]
@@ -553,6 +581,8 @@
         {nomor_id: "LINE1", nomor_flag:false,nomor_css:"btn"},
         {nomor_id: "LINE2", nomor_flag:false,nomor_css:"btn"},
         {nomor_id: "LINE3", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "LINE4", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "JACKPOT", nomor_flag:false,nomor_css:"btn btn-accent"},
     ]
     function nomorresult(e){
         let css = ""
@@ -658,7 +688,7 @@
                 Taruhan saya : Pilih beberapa angka untuk bertaruh
             </center>
             <section class="grid grid-cols-1 w-full gap-2 mt-2">
-                <div class="h-[270px] lg:h-[230px] w-full overflow-auto">
+                <div class="h-[270px] lg:h-[290px] w-full overflow-auto">
                     {#if engine_status_game_redblackline == "Y"}
                     <div class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-6 xl:grid-cols-6 lg:grid-cols-6 gap-1">
                         {#each nomorkecilgenapganjil as rec}
@@ -667,7 +697,7 @@
                             }} class="{rec.nomor_css}">{rec.nomor_id}</button>
                         {/each}
                     </div>
-                    <div class="grid grid-cols-3 mt-2  gap-1">
+                    <div class="grid grid-cols-5 mt-2  gap-1">
                         {#each nomorline as rec}
                             <button  on:click={() => {
                                 handleclick_line(rec.nomor_id);
@@ -676,11 +706,11 @@
                         
                     </div>
                     {/if}
-                    <div class="grid grid-cols-6 mt-2  gap-1 w-full">
+                    <div class="grid grid-cols-5 mt-2  gap-1 w-full">
                         {#each nomor as rec}
                         <button  on:click={() => {
                                 handleclick_angka(rec.nomor_id);
-                            }} class="{rec.nomor_css}">{rec.nomor_id}</button>
+                            }} class="{rec.nomor_css}">{rec.nomor_value}</button>
                         {/each}
                     </div>
                 </div>
@@ -849,7 +879,11 @@
                         <td>{engine_multiplier_redblack} x</td>
                     </tr>
                     <tr>
-                        <td>LINE 1,2,3</td>
+                        <td>LINE 1,2,3,4</td>
+                        <td>{engine_multiplier_line} x</td>
+                    </tr>
+                    <tr>
+                        <td>ZONA A,B,C</td>
                         <td>{engine_multiplier_line} x</td>
                     </tr>
                 </tbody>
@@ -872,15 +906,31 @@
                     </tr>
                     <tr>
                         <td>Line 1</td>
-                        <td>01,02,07,08</td>
+                        <td>01,02,03</td>
                     </tr>
                     <tr>
                         <td>Line 2</td>
-                        <td>03,04,09,10</td>
+                        <td>04,05,06</td>
                     </tr>
                     <tr>
                         <td>Line 3</td>
-                        <td>05,06,11,12</td>
+                        <td>07,08,09</td>
+                    </tr>
+                    <tr>
+                        <td>Line 4</td>
+                        <td>10,11,12</td>
+                    </tr>
+                    <tr>
+                        <td>Zona A</td>
+                        <td>01,04,07,10</td>
+                    </tr>
+                    <tr>
+                        <td>Zona B</td>
+                        <td>02,05,06,11</td>
+                    </tr>
+                    <tr>
+                        <td>Zona C</td>
+                        <td>03,06,09,12</td>
                     </tr>
                 </tbody>
             </table>
