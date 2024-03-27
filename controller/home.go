@@ -35,6 +35,11 @@ type responsedefault struct {
 	Message string      `json:"message"`
 	Record  interface{} `json:"record"`
 }
+type responsebalance struct {
+	Status  int    `json:"status"`
+	Message string `json:"message"`
+	Credit  int    `json:"credit"`
+}
 type responseerror struct {
 	Status  int    `json:"status"`
 	Message string `json:"message"`
@@ -105,9 +110,64 @@ func CheckToken(c *fiber.Ctx) error {
 		})
 	}
 }
+func Balance(c *fiber.Ctx) error {
+	type payload_listinvoice struct {
+		Client_token string `json:"client_token" `
+	}
+	hostname := c.Hostname()
+	client := new(payload_listinvoice)
+	if err := c.BodyParser(client); err != nil {
+		c.Status(fiber.StatusBadRequest)
+		return c.JSON(fiber.Map{
+			"status":  fiber.StatusBadRequest,
+			"message": err.Error(),
+			"record":  nil,
+		})
+	}
+
+	fmt.Println("Hostname: ", hostname)
+	render_page := time.Now()
+	axios := resty.New()
+	resp, err := axios.R().
+		SetResult(responsebalance{}).
+		SetError(responseerror{}).
+		SetHeader("Content-Type", "application/json").
+		SetBody(map[string]interface{}{
+			"client_token": client.Client_token,
+		}).
+		Post(PATH + "api/balance")
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	fmt.Println("Response Info:")
+	fmt.Println("  Error      :", err)
+	fmt.Println("  Status Code:", resp.StatusCode())
+	fmt.Println("  Status     :", resp.Status())
+	fmt.Println("  Proto      :", resp.Proto())
+	fmt.Println("  Time       :", resp.Time())
+	fmt.Println("  Received At:", resp.ReceivedAt())
+	fmt.Println("  Body       :\n", resp)
+	fmt.Println()
+	result := resp.Result().(*responsebalance)
+	if result.Status == 200 {
+		return c.JSON(fiber.Map{
+			"status":  result.Status,
+			"message": result.Message,
+			"credit":  result.Credit,
+			"time":    time.Since(render_page).String(),
+		})
+	} else {
+		result_error := resp.Error().(*responseerror)
+		return c.JSON(fiber.Map{
+			"status":  result_error.Status,
+			"message": result_error.Message,
+			"time":    time.Since(render_page).String(),
+		})
+	}
+}
 func Listresult(c *fiber.Ctx) error {
 	type payload_listinvoice struct {
-		Invoice_company string `json:"invoice_company" `
+		Client_token string `json:"client_token" `
 	}
 	hostname := c.Hostname()
 	client := new(payload_listinvoice)
@@ -128,7 +188,7 @@ func Listresult(c *fiber.Ctx) error {
 		SetError(responseerror{}).
 		SetHeader("Content-Type", "application/json").
 		SetBody(map[string]interface{}{
-			"invoice_company": client.Invoice_company,
+			"client_token": client.Client_token,
 		}).
 		Post(PATH + "api/listresult")
 	if err != nil {
@@ -162,8 +222,7 @@ func Listresult(c *fiber.Ctx) error {
 }
 func Listinvoice(c *fiber.Ctx) error {
 	type payload_listinvoice struct {
-		Invoice_company  string `json:"invoice_company" `
-		Invoice_username string `json:"invoice_username" `
+		Client_token string `json:"client_token" `
 	}
 	hostname := c.Hostname()
 	client := new(payload_listinvoice)
@@ -184,8 +243,7 @@ func Listinvoice(c *fiber.Ctx) error {
 		SetError(responseerror{}).
 		SetHeader("Content-Type", "application/json").
 		SetBody(map[string]interface{}{
-			"invoice_company":  client.Invoice_company,
-			"invoice_username": client.Invoice_username,
+			"client_token": client.Client_token,
 		}).
 		Post(PATH + "api/listinvoice")
 	if err != nil {
@@ -219,9 +277,8 @@ func Listinvoice(c *fiber.Ctx) error {
 }
 func SaveTransaksiDetail(c *fiber.Ctx) error {
 	type payload_savetransaksidetail struct {
-		Transaksidetail_company     string          `json:"transaksidetail_company" `
+		Client_token                string          `json:"client_token" `
 		Transaksidetail_idtransaksi string          `json:"transaksidetail_idtransaksi" `
-		Transaksidetail_username    string          `json:"transaksidetail_username" `
 		Transaksidetail_totalbet    int             `json:"transaksidetail_totalbet" `
 		Transaksidetail_listdatabet json.RawMessage `json:"transaksidetail_listdatabet" `
 	}
@@ -244,9 +301,8 @@ func SaveTransaksiDetail(c *fiber.Ctx) error {
 		SetError(responseerror{}).
 		SetHeader("Content-Type", "application/json").
 		SetBody(map[string]interface{}{
-			"transaksidetail_company":     client.Transaksidetail_company,
+			"client_token":                client.Client_token,
 			"transaksidetail_idtransaksi": client.Transaksidetail_idtransaksi,
-			"transaksidetail_username":    client.Transaksidetail_username,
 			"transaksidetail_totalbet":    client.Transaksidetail_totalbet,
 			"transaksidetail_listdatabet": string(client.Transaksidetail_listdatabet),
 		}).

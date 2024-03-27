@@ -28,6 +28,7 @@ func Init() *fiber.App {
 	})
 	app.Get("api/healthz", controller.HealthCheck)
 	app.Post("api/checktoken", controller.CheckToken)
+	app.Post("api/balance", controller.Balance)
 	app.Post("api/listresult", controller.Listresult)
 	app.Post("api/listinvoice", controller.Listinvoice)
 	app.Post("api/savetransaksi", controller.SaveTransaksiDetail)

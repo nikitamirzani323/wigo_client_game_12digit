@@ -114,7 +114,7 @@
         };
         conn.onopen = function(evt) {
           // console.log(evt)
-          conn.send("nuke")
+          conn.send(e.toLowerCase())
         }
         conn.onmessage = function (evt) {
             var messages = evt.data;
@@ -129,7 +129,7 @@
             let maintenance_status = text_finalsplit[3];
             let data_result = text_finalsplit[4];
 
-            // console.log(messages)
+          
             if(data_invoice != ""){
               engine_invoice = data_invoice;
             }else{
@@ -161,6 +161,7 @@
     {#if flag_game}
     <Home 
       {path_api}  
+      {token_browser}  
       {engine_time}  
       {engine_time_css}  
       {engine_invoice}  

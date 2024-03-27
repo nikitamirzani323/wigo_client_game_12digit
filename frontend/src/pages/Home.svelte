@@ -8,6 +8,7 @@
     dayjs.extend(timezone);
    
     export let path_api = "";
+    export let token_browser = "";
     export let engine_time = 0
     export let engine_time_css = ""
     export let engine_invoice = ""
@@ -85,6 +86,7 @@
         if(engine_result != ""){
             fetch_invoiceall()
         }
+        
     }
     async function call_bayar() {
         keranjang = [];
@@ -122,7 +124,6 @@
         // flag = false;
         if(flag){
             flag_btnbuy = false;
-            
             for(let i=0;i<total_bet_multiple;i++){
                 let tipebet = "ANGKA"
                 multiplier = parseFloat(engine_multiplier_angka)
@@ -168,9 +169,8 @@
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    transaksidetail_company: client_company,
+                    client_token: token_browser,
                     transaksidetail_idtransaksi: engine_invoice,
-                    transaksidetail_username: client_username,
                     transaksidetail_totalbet: parseInt(total_bayar),
                     transaksidetail_listdatabet: keranjang,
                 }),
@@ -182,7 +182,8 @@
                 alert(json.message);
                 flag_btnbuy = true;
             } else {
-                client_credit = parseInt(client_credit) - parseInt(total_bayar)
+                // client_credit = parseInt(client_credit) - parseInt(total_bayar)
+                fetch_balance()
                 fetch_invoiceall()
            
                 flag_btnbuy = true;
@@ -196,16 +197,31 @@
                     default:
                         toast.error("System Error, Please contact administrator");
                         break;
-
                 }       
-
-
-                
                 call_reset()
             }
         }else{
-            
             toast.error(msg_err);
+        }
+    }
+    async function fetch_balance() {
+        const res = await fetch(path_api+"api/balance", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                client_token: token_browser,
+            }),
+        });
+        const json = await res.json();
+        if (json.status === 400) {
+        
+        } else if (json.status == 403) {
+            alert(json.message);
+        } else {
+            let record_credit = json.credit;
+            client_credit = parseInt(record_credit)
         }
     }
     async function fetch_listresult() {
@@ -218,7 +234,7 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                invoice_company: client_company.toLowerCase(),
+                client_token: token_browser,
             }),
         });
         const json = await res.json();
@@ -252,8 +268,7 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                invoice_company: client_company.toLowerCase(),
-                Invoice_username: client_username,
+                client_token: token_browser,
             }),
         });
         const json = await res.json();
@@ -680,6 +695,7 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-2 w-full">
+                    {#if flag_btnbuy}
                     <button on:click={() => {
                                 call_reset();
                         }}  class="btn btn-primary">
@@ -696,6 +712,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                         </svg>
                     </button>
+                    {/if}
                 </div>
             </section>
         {:else}
