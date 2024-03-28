@@ -25,6 +25,8 @@
     export let engine_multiplier_angka = 0;
     export let engine_multiplier_redblack = 0;
     export let engine_multiplier_line = 0;
+    export let engine_multiplier_zona = 0;
+    export let engine_multiplier_jackpot = 0;
     export let engine_result = "";
     export let engine_status_game_redblackline = "";
     
@@ -45,30 +47,7 @@
     let isModalInfo = false;
     
     let listangka = []
-    let redblack = []
-    let btn_red_css = "btn btn-error"
-    let btn_red_flag = false
-    let btn_black_css = "btn"
-    let btn_black_flag = false
-    let btn_ganjil_css = "btn"
-    let btn_ganjil_flag = false
-    let btn_genap_css = "btn"
-    let btn_genap_flag = false
-    let btn_kecil_css = "btn"
-    let btn_kecil_flag = false
-    let btn_besar_css = "btn"
-    let btn_besar_flag = false
-
-    let btn_line1_css = "btn"
-    let btn_line1_flag = false
-    let btn_line2_css = "btn"
-    let btn_line2_flag = false
-    let btn_line3_css = "btn"
-    let btn_line3_flag = false
-    let btn_line4_css = "btn"
-    let btn_line4_flag = false
-    let btn_line5_css = "btn"
-    let btn_line5_flag = false
+    
 
 
     function updateClock() {
@@ -149,15 +128,15 @@
                 }
                 if(listangka[i] == "ZONA_A" || listangka[i] == "ZONA_B"){
                     tipebet = "ZONA"
-                    multiplier = parseFloat(engine_multiplier_line)
+                    multiplier = parseFloat(engine_multiplier_zona)
                 }
                 if(listangka[i] == "ZONA_C"){
                     tipebet = "ZONA"
-                    multiplier = parseFloat(engine_multiplier_line)
+                    multiplier = parseFloat(engine_multiplier_zona)
                 }
                 if(listangka[i] == "JACKPOT"){
-                    tipebet = "JACKPOT"
-                    multiplier = parseFloat(engine_multiplier_line)
+                    tipebet = "ANGKA"
+                    multiplier = parseFloat(engine_multiplier_jackpot)
                 }
                 const data = {
                     ipaddress: client_ipaddress,
@@ -337,32 +316,9 @@
     const call_reset = () => {
         keranjang = [];
         listangka = []
-        redblack = []
         field_bet = engine_minbet
 
-        btn_red_css = "btn btn-error"
-        btn_red_flag = false
-        btn_black_css = "btn"
-        btn_black_flag = false
-        btn_ganjil_css = "btn"
-        btn_ganjil_flag = false
-        btn_genap_css = "btn"
-        btn_genap_flag = false
-        btn_kecil_css = "btn"
-        btn_kecil_flag = false
-        btn_besar_css = "btn"
-        btn_besar_flag = false
-
-        btn_line1_css = "btn"
-        btn_line1_flag = false
-        btn_line2_css = "btn"
-        btn_line2_flag = false
-        btn_line3_css = "btn"
-        btn_line3_flag = false
-        btn_line4_css = "btn"
-        btn_line4_flag = false
-        btn_line5_css = "btn"
-        btn_line5_flag = false
+        
 
         for(let i=0;i<nomor_master.length;i++){
             nomor[i].nomor_flag = nomor_master[i].nomor_flag
@@ -884,7 +840,11 @@
                     </tr>
                     <tr>
                         <td>ZONA A,B,C</td>
-                        <td>{engine_multiplier_line} x</td>
+                        <td>{engine_multiplier_zona} x</td>
+                    </tr>
+                    <tr>
+                        <td>JACKPOT</td>
+                        <td>{engine_multiplier_jackpot} x</td>
                     </tr>
                 </tbody>
             </table>

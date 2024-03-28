@@ -30,6 +30,8 @@
   let engine_multiplier_angka = 0;
   let engine_multiplier_redblack = 0;
   let engine_multiplier_line = 0;
+  let engine_multiplier_zona = 0;
+  let engine_multiplier_jackpot = 0;
   let engine_result = "";
   let engine_status_game_redblackline = "N";
   let engine_status_maintenance = "N";
@@ -76,6 +78,8 @@
           engine_multiplier_angka = json.engine_multiplier_angka;
           engine_multiplier_redblack = json.engine_multiplier_redblack;
           engine_multiplier_line = json.engine_multiplier_line;
+          engine_multiplier_zona = json.engine_multiplier_zona;
+          engine_multiplier_jackpot = json.engine_multiplier_jackpot;
           engine_status_game_redblackline = json.engine_status_game_redblackline;
           engine_status_maintenance = json.engine_status_maintenance;
           let record_listbet = json.client_listbet.record;
@@ -177,6 +181,8 @@
       {engine_multiplier_angka}  
       {engine_multiplier_redblack}  
       {engine_multiplier_line}  
+      {engine_multiplier_zona}  
+      {engine_multiplier_jackpot}  
       {engine_result}  
       {engine_status_game_redblackline}  />
     {:else}
