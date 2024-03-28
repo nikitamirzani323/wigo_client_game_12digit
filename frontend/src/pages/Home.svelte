@@ -573,6 +573,9 @@
         }else if(css == "RED"){
             css = "bg-error text-black "
         }
+        if(temp == "JACKPOT"){
+            css = "bg-accent text-black "
+        }
         return css
     }
   </script>
