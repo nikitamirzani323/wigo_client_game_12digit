@@ -134,7 +134,7 @@
                     tipebet = "ZONA"
                     multiplier = parseFloat(engine_multiplier_zona)
                 }
-                if(listangka[i] == "JACKPOT"){
+                if(listangka[i] == "JP"){
                     tipebet = "ANGKA"
                     multiplier = parseFloat(engine_multiplier_jackpot)
                 }
@@ -502,11 +502,11 @@
 		{nomor_id: "BESAR", nomor_flag:false,nomor_css:"btn"},
     ]
     let nomorline_master = [
-        {nomor_id: "LINE1", nomor_flag:false,nomor_css:"btn"},
-        {nomor_id: "LINE2", nomor_flag:false,nomor_css:"btn"},
-        {nomor_id: "LINE3", nomor_flag:false,nomor_css:"btn"},
-        {nomor_id: "LINE4", nomor_flag:false,nomor_css:"btn"},
-        {nomor_id: "JACKPOT", nomor_flag:false,nomor_css:"btn btn-accent"},
+        {nomor_id: "LINE1", nomor_value: "LINE 1", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "LINE2", nomor_value: "LINE 2", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "LINE3", nomor_value: "LINE 3", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "LINE4", nomor_value: "LINE 4", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "JP", nomor_value: "JACKPOT", nomor_flag:false,nomor_css:"btn btn-accent"},
     ]
     let nomor = [
         {nomor_id: "01", nomor_value:"01", nomor_zona:"ZONA_A", nomor_flag:false,nomor_css:"btn btn-error",nomor_gangen: "GANJIL", nomor_besarkecil: "KECIL", nomor_line: "LINE1", nomor_redblack: "RED"},
@@ -534,11 +534,11 @@
 		{nomor_id: "BESAR", nomor_flag:false,nomor_css:"btn"},
     ]
     let nomorline = [
-        {nomor_id: "LINE1", nomor_flag:false,nomor_css:"btn"},
-        {nomor_id: "LINE2", nomor_flag:false,nomor_css:"btn"},
-        {nomor_id: "LINE3", nomor_flag:false,nomor_css:"btn"},
-        {nomor_id: "LINE4", nomor_flag:false,nomor_css:"btn"},
-        {nomor_id: "JACKPOT", nomor_flag:false,nomor_css:"btn btn-accent"},
+        {nomor_id: "LINE1", nomor_value: "LINE 1", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "LINE2", nomor_value: "LINE 2", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "LINE3", nomor_value: "LINE 3", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "LINE4", nomor_value: "LINE 4", nomor_flag:false,nomor_css:"btn"},
+        {nomor_id: "JP", nomor_value: "JACKPOT", nomor_flag:false,nomor_css:"btn btn-accent"},
     ]
     function nomorresult(e){
         let css = ""
@@ -573,7 +573,7 @@
         }else if(css == "RED"){
             css = "bg-error text-black "
         }
-        if(temp == "JACKPOT"){
+        if(temp == "JP"){
             css = "bg-accent text-black "
         }
         return css
@@ -687,8 +687,8 @@
                     {#if flag_btnbuy}
                     <button on:click={() => {
                                 call_reset();
-                        }}  class="btn btn-primary">
-                        Reset 
+                        }}  class="btn ">
+                        Hapus 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
                         </svg>
@@ -712,7 +712,7 @@
                 <div class="-mt-5 h-[250px] w-full text-center">
                     <center>
                         <div class="rounded-box text-[150px] w-1/2 mt-5 mb-5  font-extrabold {nomorresulttwo(engine_result)}">
-                            {engine_result} 
+                            {engine_result}
                         </div>
                     </center>
                 </div>
@@ -798,11 +798,14 @@
 
 <input type="checkbox" id="my-modal-information" class="modal-toggle" bind:checked={isModalMinBet}>
 <div class="modal" on:click|self={()=>isModalMinBet = false}>
-    <div class="modal-box relative w-11/12 max-w-lg h-1/2 lg:h-2/3 overflow-auto select-none">
+    <div class="modal-box relative w-11/12 max-w-lg h-1/2  overflow-auto select-none">
         <label for="my-modal-information" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
         <h3 class="text-xs lg:text-sm font-bold -mt-2">COIN BET</h3>
         <div class="h-fit overflow-auto  mt-2" >
-            <div class="grid grid-cols-3 lg:grid-cols-5 mt-5 gap-2 justify-self-center">
+            <center class="mt-2 bg-base-300 p-2 rounded-2xl text-[11px] lg:text-[15px]">
+                Pilih coin bet dibawah ini : 
+            </center>
+            <div class="grid grid-cols-3 lg:grid-cols-3 mt-5 gap-2 justify-self-center">
                 {#each client_listbet as rec}
                 <div on:click={() => {
                     handle_minbet(rec.money_bet);
