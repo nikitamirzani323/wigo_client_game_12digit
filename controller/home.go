@@ -53,7 +53,6 @@ func CheckToken(c *fiber.Ctx) error {
 	type payload_checktoken struct {
 		Client_token string `json:"client_token" `
 	}
-	hostname := c.Hostname()
 	client := new(payload_checktoken)
 	if err := c.BodyParser(client); err != nil {
 		c.Status(fiber.StatusBadRequest)
@@ -63,8 +62,6 @@ func CheckToken(c *fiber.Ctx) error {
 			"record":  nil,
 		})
 	}
-
-	fmt.Println("Hostname: ", hostname)
 	render_page := time.Now()
 	axios := resty.New()
 	resp, err := axios.R().
@@ -78,15 +75,6 @@ func CheckToken(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	fmt.Println("Response Info:")
-	fmt.Println("  Error      :", err)
-	fmt.Println("  Status Code:", resp.StatusCode())
-	fmt.Println("  Status     :", resp.Status())
-	fmt.Println("  Proto      :", resp.Proto())
-	fmt.Println("  Time       :", resp.Time())
-	fmt.Println("  Received At:", resp.ReceivedAt())
-	fmt.Println("  Body       :\n", resp)
-	fmt.Println()
 	result := resp.Result().(*responsechecktoken)
 	if result.Client_status == 200 {
 		return c.JSON(fiber.Map{
@@ -143,15 +131,6 @@ func Balance(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	fmt.Println("Response Info:")
-	fmt.Println("  Error      :", err)
-	fmt.Println("  Status Code:", resp.StatusCode())
-	fmt.Println("  Status     :", resp.Status())
-	fmt.Println("  Proto      :", resp.Proto())
-	fmt.Println("  Time       :", resp.Time())
-	fmt.Println("  Received At:", resp.ReceivedAt())
-	fmt.Println("  Body       :\n", resp)
-	fmt.Println()
 	result := resp.Result().(*responsebalance)
 	if result.Status == 200 {
 		return c.JSON(fiber.Map{
@@ -198,15 +177,6 @@ func Listresult(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	fmt.Println("Response Info:")
-	fmt.Println("  Error      :", err)
-	fmt.Println("  Status Code:", resp.StatusCode())
-	fmt.Println("  Status     :", resp.Status())
-	fmt.Println("  Proto      :", resp.Proto())
-	fmt.Println("  Time       :", resp.Time())
-	fmt.Println("  Received At:", resp.ReceivedAt())
-	fmt.Println("  Body       :\n", resp)
-	fmt.Println()
 	result := resp.Result().(*responsedefault)
 	if result.Status == 200 {
 		return c.JSON(fiber.Map{
@@ -253,15 +223,6 @@ func Listinvoice(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	fmt.Println("Response Info:")
-	fmt.Println("  Error      :", err)
-	fmt.Println("  Status Code:", resp.StatusCode())
-	fmt.Println("  Status     :", resp.Status())
-	fmt.Println("  Proto      :", resp.Proto())
-	fmt.Println("  Time       :", resp.Time())
-	fmt.Println("  Received At:", resp.ReceivedAt())
-	fmt.Println("  Body       :\n", resp)
-	fmt.Println()
 	result := resp.Result().(*responsedefault)
 	if result.Status == 200 {
 		return c.JSON(fiber.Map{
